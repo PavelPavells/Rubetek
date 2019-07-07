@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-class CastList extends Component{
-
+class CastList extends Component {
 loadCastList = (id) => {
-    // fetch objects from backend
     axios.get(`http://api.tvmaze.com/shows/${id}/cast`)
     .then(response => {
         const castList = response.data;
         console.log(castList);
-        //update castList array:
         this.props.updateCastList(castList)
     })
     .catch(error => {
-        // if no data:
         console.log(error.response)
     });
 }
@@ -38,7 +34,6 @@ showCastList = () => {
                 : <h3>no cast list available for this show</h3>
         }
 }
-
     render(){
         return(
             <div className="w3-col s4">
@@ -49,5 +44,4 @@ showCastList = () => {
         );
     }
 }
-
 export default CastList;

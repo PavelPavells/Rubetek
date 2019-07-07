@@ -4,33 +4,26 @@ import ShowDetails from './ShowDetails';
 import CastList from './CastList';
 import axios from 'axios';
 
-class ShowDisplay extends Component{
+class ShowDisplay extends Component {
 
 updateData = (id) => {
     let api = 'http://api.tvmaze.com/shows/'+id;
     axios.get(api)
         .then(response => {
             const tvShow = response.data;
-            console.log(tvShow);
-            // this gives the current tv show image url to props
+            //console.log(tvShow);
             tvShow.image ? this.props.getTvImageUrl(tvShow.image.original) : this.props.getTvImageUrl("http://www.angostura.com/wp-content/uploads/2017/06/no_image_available.jpeg")
-            // this gives the show data to props - now can use in ShowDetails
             this.props.updateTvShowData(tvShow);
         })
         .catch(error => {
-            // if no data:
             console.log(error.response)
         });
 }
-// prevents mega looping - if id changes recall the api
 componentDidUpdate(prevProps){
     if(this.props.showId !== prevProps.showId){
         this.updateData(this.props.showId) 
     }
-    
 }
-
-    // if tv item has been clicked this prop is true and can display the show picture
     showImage = () => {
         const isClicked = this.props.tvShowClicked;
         if (isClicked) {
@@ -45,16 +38,13 @@ componentDidUpdate(prevProps){
             </div>
             </div>;
         }
-      }
-      
-    render(){
+    }     
+    render() {
         return(
             <div>
                 {this.showImage()}
-            </div>  
-                 
+            </div>         
         );
     }
 }
-
 export default ShowDisplay;
