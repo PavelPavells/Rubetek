@@ -28,14 +28,15 @@ componentDidUpdate(prevProps){
         const isClicked = this.props.tvShowClicked;
         if (isClicked) {
           return <div className="w3-container">
-            <div className="w3-row-padding" style={{paddingTop: '10px'}}>
-            <ShowImage tvImageUrl={this.props.tvImageUrl}/>
-            <ShowDetails tvShowData={this.props.tvShowData} />
-            <CastList showId={this.props.showId} 
-            updateCastList={this.props.updateCastList} 
-            castList={this.props.castList}
-            castListClicked={this.props.castListClicked}/>
-            </div>
+                    <div className="w3-row-padding" style={{paddingTop: '10px'}}>
+                    <ShowImage tvImageUrl={this.props.tvImageUrl}/>
+                    <ShowDetails tvShowData={this.props.tvShowData} />
+                    <CastList showId={this.props.showId} 
+                        updateCastList={this.props.updateCastList} 
+                        castList={this.props.castList}
+                        castListClicked={this.props.castListClicked}
+                    />
+                </div>
             </div>;
         }
     }     

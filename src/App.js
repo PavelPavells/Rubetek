@@ -3,7 +3,6 @@ import 'w3-css/w3.css';
 import Search from './components/Search';
 import SearchResults from './components/SearchResults';
 import ShowDisplay from './components/ShowDisplay';
-import EpisodeList from './components/EpisodeList';
 class App extends Component {
   constructor(props) {
     super(props)
@@ -15,7 +14,6 @@ class App extends Component {
       tvShowData: null,
       castList: null,
       castListClicked: false,
-      episodeList: null
     }
   }
   updateTvShowList = (list) => {
@@ -55,11 +53,6 @@ class App extends Component {
       castListClicked: true
     })
   }
-  updateEpisodeList = (data) => {
-    this.setState({
-      episodeList: data
-    })
-  }
   render() {
     return (
       <div>
@@ -70,16 +63,15 @@ class App extends Component {
         <div style={{ marginLeft:'20%' }}>
           <div className="w3-container">
             <ShowDisplay showId={this.state.selectedShow} 
-            tvShowClicked={this.state.tvShowClicked} 
-            getTvImageUrl={this.getTvImageUrl}
-            tvImageUrl={this.state.tvImageUrl}
-            updateTvShowData={this.updateTvShowData}
-            tvShowData={this.state.tvShowData}
-            updateCastList={this.updateCastList}
-            castList={this.state.castList}
-            castListClicked={this.state.castListClicked}
+              tvShowClicked={this.state.tvShowClicked} 
+              getTvImageUrl={this.getTvImageUrl}
+              tvImageUrl={this.state.tvImageUrl}
+              updateTvShowData={this.updateTvShowData}
+              tvShowData={this.state.tvShowData}
+              updateCastList={this.updateCastList}
+              castList={this.state.castList}
+              castListClicked={this.state.castListClicked}
             />
-            <EpisodeList episodeList={this.state.episodeList}/>
           </div>
         </div>
       </div>

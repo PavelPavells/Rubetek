@@ -13,13 +13,9 @@ loadCastList = (id) => {
         console.log(error.response)
     });
 }
-
 hideButtonShowCount = () => {
     return <h1>{this.props.castList.length}</h1>
 }
-
-// if castList button has been clicked this prop is true and can display the cast list map
-// must check if castList exists aka has data with : 
 showCastList = () => {
         const castClicked = this.props.castListClicked;
         if (castClicked) {
@@ -37,7 +33,7 @@ showCastList = () => {
     render(){
         return(
             <div className="w3-col s4">
-        {this.props.castListClicked && this.props.castList.length > 0 ? <h2>Cast List ({this.props.castList.length})</h2> : 
+                {this.props.castListClicked && this.props.castList.length > 0 ? <h2>Cast List ({this.props.castList.length})</h2> : 
                 <button onClick={()=> this.loadCastList(this.props.showId)} className="w3-button w3-round-large w3-blue-grey" id="buttonCast">retrieve cast list</button>}
                 <div className="w3-sidebar" style={{width: "100%"}}><ul className="w3-ul">{this.showCastList()}</ul></div>
             </div>
